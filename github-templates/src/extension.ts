@@ -3,6 +3,12 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+
+function commandHi() : void {
+    vscode.window.showInformationMessage('Hi!');
+}
+
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -22,8 +28,17 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(disposable);
+
+    let disposableCommandHi = vscode.commands.registerCommand('extension.sayHi', commandHi);
+
+    context.subscriptions.push(disposableCommandHi);
+
+
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {
 }
+
+
+
