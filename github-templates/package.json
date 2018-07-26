@@ -12,7 +12,8 @@
     ],
     "activationEvents": [
         "onCommand:extension.testHello",
-        "onCommand:extension.testQuickPick"
+        "onCommand:extension.testQuickPick",
+        "onCommand:extension.testCreateFile"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -24,6 +25,10 @@
             {
                 "command": "extension.testQuickPick",
                 "title": "Test Quick Pick"
+            },
+            {
+                "command": "extension.testCreateFile",
+                "title": "Test Create File"
             }
         ]
     },

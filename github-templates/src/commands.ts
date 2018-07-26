@@ -37,3 +37,9 @@ export function commandTestQuickPick() : void {
         console.log(reason);
       });
 }
+
+
+
+export function commandTestCreateFile() : void {
+    console.log('command: TestCreateFile');
+}
