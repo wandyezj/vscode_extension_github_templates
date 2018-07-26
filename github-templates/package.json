@@ -11,19 +11,19 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello",
-        "onCommand:extension.sayHi"
+        "onCommand:extension.testHello",
+        "onCommand:extension.testQuickPick"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "extension.testHello",
+                "title": "Test Hello"
             },
             {
-                "command": "extension.sayHi",
-                "title": "Hi"
+                "command": "extension.testQuickPick",
+                "title": "Test Quick Pick"
             }
         ]
     },
