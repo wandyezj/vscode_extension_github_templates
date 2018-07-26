@@ -11,9 +11,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.testHello",
-        "onCommand:extension.testQuickPick",
+        "onCommand:extension.testHello"
+        ,
+        "onCommand:extension.testQuickPick"
+        ,
         "onCommand:extension.testCreateFile"
+        ,
+        "onCommand:extension.testGithub"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -21,14 +25,21 @@
             {
                 "command": "extension.testHello",
                 "title": "Test Hello"
-            },
+            }
+            ,
             {
                 "command": "extension.testQuickPick",
                 "title": "Test Quick Pick"
-            },
+            }
+            ,
             {
                 "command": "extension.testCreateFile",
                 "title": "Test Create File"
+            }
+            ,
+            {
+                "command": "extension.testGithub",
+                "title": "Test Github"
             }
         ]
     },
