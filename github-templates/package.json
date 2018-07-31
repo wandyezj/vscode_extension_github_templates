@@ -18,6 +18,8 @@
         "onCommand:extension.testCreateFile"
         ,
         "onCommand:extension.testGithub"
+        ,
+        "onCommand:extension.testOpenFile"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -41,6 +43,11 @@
                 "command": "extension.testGithub",
                 "title": "Test Github"
             }
+            ,
+            {
+                "command": "extension.testOpenFile",
+                "title": "Test Open File"
+            }
         ]
     },
     "scripts": {
@@ -49,6 +56,11 @@
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "dependencies": {
+        "request" : "*"
+        ,
+        "path" : "*"
     },
     "devDependencies": {
         "typescript": "^2.6.1",

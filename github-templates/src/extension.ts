@@ -17,7 +17,7 @@ class RegisterCommand {
     }
 }
 
-import { commandTestHello, commandTestQuickPick, commandTestCreateFile, commandTestGithub} from './commands';
+import { commandTestHello, commandTestQuickPick, commandTestCreateFile, commandTestGithub, commandTestOpenFile} from './testcommands';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -37,6 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
         new RegisterCommand('extension.testQuickPick', commandTestQuickPick),
         new RegisterCommand('extension.testCreateFile', commandTestCreateFile),
         new RegisterCommand('extension.testGithub', commandTestGithub),
+        new RegisterCommand('extension.testOpenFile', commandTestOpenFile),
     ];   
 
 
