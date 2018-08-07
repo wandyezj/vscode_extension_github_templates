@@ -1,6 +1,6 @@
 {
 	'templates':[
-		'template name A':{},
-		'template name B':{}
+		{'name':'template name A', 'note':'note A'},
+		{'name':'template name B', 'note':'note B'}
 	]
 }

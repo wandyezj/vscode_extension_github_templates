@@ -1,14 +1,17 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import { isUndefined } from 'util';
+import { isUndefined, isNullOrUndefined } from 'util';
+
+import {TemplateManifest, Templates} from './TemplateManifest';
+
 export function commandTestHello() : void {
     vscode.window.showInformationMessage('Hello!');
     //vscode.window.showQuickPick()
 }
 
 
-
+/*
 interface Template {
     note: string;
 }
@@ -16,11 +19,14 @@ interface Template {
 interface Templates {
     [id: string] : Template;
 }
-
+*/
 export function commandTestQuickPick() : void {
-    let templates : Templates = {'template A' :{'note':'A'} , 'template B': {'note': 'B'} };
+    //let templates : Templates = {'template A' :{'note':'A'} , 'template B': {'note': 'B'} };
 
-    vscode.window.showQuickPick(Object.keys(templates)).then(
+    let manifest : TemplateManifest = {'templates':[{'name':'template name A', 'note': 'A' }, {'name':'template name B', 'note': 'B' }]};
+    let templates : Templates = new Templates(manifest);
+//Object.keys(templates)
+    vscode.window.showQuickPick(Object.keys(templates.choices)).then(
         function(value) {
         // fulfillment
         if (isUndefined(value)){
@@ -29,7 +35,8 @@ export function commandTestQuickPick() : void {
         else {
             //vscode.window.showInformationMessage(value);
             console.log(value);
-            vscode.window.showInformationMessage(templates[value].note);
+            //templates.find(x => x.name === value).note
+            vscode.window.showInformationMessage(templates.choices[value].note);
         }
         
       }, function(reason) {
@@ -128,7 +135,10 @@ function GithubPath(user: string, repository: string, path: string) : string {
     return `https://raw.githubusercontent.com/${user}/${repository}/master/${path}`;
 }
 
+//https://github.com/wandyezj/vscode_extension_github_templates/blob/master/templates.json
+
 //import * as request from 'request';
+
 
 export function commandTestGithub() : void {
     console.log('command: TestGithub');
@@ -143,4 +153,26 @@ export function commandTestGithub() : void {
         console.log('body:', body); // Print the HTML for the Google homepage.
     });
     // now need to download the files text
+
+    path = GithubPath('wandyezj', 'vscode_extension_github_templates', 'templates.json');
+    request(path, function(error : any, response :any, body :string) {
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); // Print the HTML for the Google homepage.
+
+        if (!isNullOrUndefined(response) && response.statusCode === 200){
+            let manifest : TemplateManifest = JSON.parse(body);
+
+            for (let template of manifest.templates) {
+                console.log(template.name);
+            }
+
+        }
+
+    });
+
+
+
+
+
 }
